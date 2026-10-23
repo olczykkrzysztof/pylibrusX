@@ -17,6 +17,9 @@ message from a given folder to an e-mail, and (optionally) new announcements too
 > The authors accept no liability for its use, including blocked
 > accounts, missed or duplicated notifications, or data sent to the wrong place.
 
+Started as a fork of [gozdal/pylibrus](https://github.com/gozdal/pylibrus), but has since undergone
+significant refactoring and gained many new features.
+
 ## What it does
 
 pyLibrus is a small command-line script meant to run unattended from cron every few minutes.
