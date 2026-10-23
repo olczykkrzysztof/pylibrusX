@@ -82,7 +82,7 @@ class LibrusScraper:
         Announcements have no pagination, no per-item URL and no read/unread flag - the
         whole page lists every currently valid announcement on every call, newest first
         as Librus renders it. The caller is responsible for deduplication (there is no
-        stable id to key on - see `announcement_id()`). See ANNOUNCEMENTS_PLAN.md for the
+        stable id to key on - see `announcement_id()`). See plans/ANNOUNCEMENTS_PLAN.md for the
         full rationale; the parsing itself is `parse_announcements()`.
         """
         resp = self._get(

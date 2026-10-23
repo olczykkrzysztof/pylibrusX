@@ -2,7 +2,7 @@
 
 The same school message lands in every child's account under the same `msg_path`, so it must
 go out once per *destination* rather than once per child, annotated with that destination's
-children - see MULTI_RECIPIENT_PLAN.md. These tests drive `collect_user()` and
+children - see plans/MULTI_RECIPIENT_PLAN.md. These tests drive `collect_user()` and
 `notify_collected()` with fake scrapers so no network or SMTP call happens, while the DBs are
 real SQLite files in tmp_path so the cross-session behaviour (and the shared-file locking the
 two-phase split introduced) is exercised for real.
@@ -217,7 +217,7 @@ def test_unread_mode_resends_while_any_child_has_it_unread(config_unread, notifi
 
     So an item nobody has opened yet keeps being sent, and the label stays the same between
     ticks - it names who received the item, not who still has it unread. See
-    MULTI_RECIPIENT_PLAN.md D4.
+    plans/MULTI_RECIPIENT_PLAN.md D4.
     """
     dest = email_to("parents@example.com")
     users = [make_user("Ania", dest), make_user("Jas", dest)]
@@ -349,7 +349,7 @@ def test_a_child_whose_scrape_fails_does_not_block_the_others(config, notifier_f
 # --- always_include_in_subject: leaving a redundant child out of the label -----------------
 #
 # The entry is labelling only. It never changes delivery or dedupe, and it never leaves an
-# item with no name at all - see SUBJECT_NAMES_PLAN.md.
+# item with no name at all - see plans/SUBJECT_NAMES_PLAN.md.
 
 
 def test_redundant_child_is_left_out_of_the_label(config, notifier_factory, send_log):

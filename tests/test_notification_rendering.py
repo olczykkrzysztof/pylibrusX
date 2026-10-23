@@ -2,7 +2,7 @@
 
 Pins the full email (headers, HTML and plain parts, banner, attachments as links and as MIME
 parts, the SMTP conversation) and the full webhook payload (Librus links and S3 links), so that
-extracting rendering and transport (REFACTOR_PLAN.md step 4) can prove it changed nothing.
+extracting rendering and transport (plans/REFACTOR_PLAN.md step 4) can prove it changed nothing.
 
 The patches target the third-party entry points themselves (`smtplib.SMTP`, `requests.post`,
 `boto3.client`) rather than names inside pylibrus, so these tests stay valid however the code

@@ -9,7 +9,7 @@ def group_by_destination(collections: list[UserCollection]) -> dict[tuple, list[
 
     Insertion order is config order (the run no longer shuffles users), and dict preserves it,
     so each group's first member is its representative - which fixes the sending account and
-    the order names appear in the label. See MULTI_RECIPIENT_PLAN.md.
+    the order names appear in the label. See plans/MULTI_RECIPIENT_PLAN.md.
     """
     groups: dict[tuple, list[UserCollection]] = {}
     for collection in collections:
@@ -41,10 +41,10 @@ def should_notify_group(pylibrus_config: PyLibrusConfig, group: ItemGroup) -> tu
     Reads CollectedItem.email_sent, the value captured during collect, never the live column.
     Children on different destinations share one Msg row, so consulting the column would let
     the first destination's send mark that row and mute every later destination - only one
-    destination would ever be notified. See MULTI_RECIPIENT_PLAN.md.
+    destination would ever be notified. See plans/MULTI_RECIPIENT_PLAN.md.
     """
     # Announcements have no per-item read/unread flag, so they always dedupe the "unsent" way
-    # regardless of send_message - see ANNOUNCEMENTS_PLAN.md.
+    # regardless of send_message - see plans/ANNOUNCEMENTS_PLAN.md.
     is_announcement = group[0][1].read is None
 
     if pylibrus_config.send_message == "unread" and not is_announcement:
@@ -62,7 +62,7 @@ def group_names(group: ItemGroup) -> tuple[str, str]:
 
     A child configured with `always_include_in_subject=false` is left out of `display_name`,
     but only while another child remains to name - an item that reached only such children is
-    still labelled with them rather than with nothing at all. See SUBJECT_NAMES_PLAN.md.
+    still labelled with them rather than with nothing at all. See plans/SUBJECT_NAMES_PLAN.md.
     """
     users = [collection.librus_user for collection, _ in group]
     recipient_names = ", ".join(user.name for user in users)

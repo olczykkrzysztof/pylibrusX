@@ -107,7 +107,7 @@ def parse_announcements(html: str) -> list[ParsedAnnouncement]:
 
     Unknown/missing fields are logged and skipped rather than raising: a cosmetic Librus markup
     change here must not break message forwarding, which is the primary feature. See
-    ANNOUNCEMENTS_PLAN.md.
+    plans/ANNOUNCEMENTS_PLAN.md.
     """
     soup = BeautifulSoup(html, "html.parser")
 

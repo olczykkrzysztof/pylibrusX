@@ -1,7 +1,7 @@
 """Characterisation tests for the inbox and message parsers (`msgs_from_folder`, `fetch_msg`).
 
 These pin down what the current code extracts from a page, including the request paths and
-referers it sends, so that splitting parsing from fetching (REFACTOR_PLAN.md step 3) can prove
+referers it sends, so that splitting parsing from fetching (plans/REFACTOR_PLAN.md step 3) can prove
 it changed nothing. No network access happens here: a FakeSession serves the fixtures and
 records what was asked for.
 """

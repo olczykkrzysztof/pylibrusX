@@ -46,7 +46,7 @@
 ; own copy. pyLibrus sends one notification per destination instead of one per child, and
 ; names every child of that destination it was sent to, e.g. "[LIBRUS Ania, Jas] ...".
 ; Children configured with different email_dest/webhook each get their own grouped copy
-; naming only their own children. Nothing to configure - see MULTI_RECIPIENT_PLAN.md.
+; naming only their own children. Nothing to configure - see plans/MULTI_RECIPIENT_PLAN.md.
 
 ; This is example configuration for forwarding messages to email
 [user:ChildName]

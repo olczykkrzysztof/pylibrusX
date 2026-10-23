@@ -54,7 +54,7 @@ class MessageStore:
         they all point at the same SQLite file. SQLAlchemy defers BEGIN until the first DML, so
         one session sitting on uncommitted INSERTs holds a write lock that makes the next
         user's INSERT fail with "database is locked" - hence committing eagerly at each phase
-        boundary rather than relying on __exit__ alone. See MULTI_RECIPIENT_PLAN.md.
+        boundary rather than relying on __exit__ alone. See plans/MULTI_RECIPIENT_PLAN.md.
         """
         if self._session:
             self._session.commit()
