@@ -55,6 +55,12 @@ exact email/webhook sent: when one fails, the behaviour changed. `--test-notify`
 
 `ruff` config lives in `pyproject.toml` (line length 120, py312 target, double quotes).
 
+## Plans
+
+Design and planning documents (`*_PLAN.md`) live in `plans/`, never in the repository root. Create
+every new plan there, named `<TOPIC>_PLAN.md`, and refer to it as `plans/<TOPIC>_PLAN.md` from
+code comments and `CLAUDE.md`. Don't link to plans from `README.md`.
+
 ## Configuration
 
 Two independent ways to configure, chosen in `read_pylibrus_config()`:
