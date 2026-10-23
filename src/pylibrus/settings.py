@@ -83,7 +83,7 @@ class Notify(abc.ABC):
 
         Librus users whose configs produce the same key are notified together: one message
         sent to several children yields a single notification per destination, annotated with
-        that destination's children (see MULTI_RECIPIENT_PLAN.md). Keep this in sync when
+        that destination's children (see plans/MULTI_RECIPIENT_PLAN.md). Keep this in sync when
         adding a notification setting, the same way from_config()/from_env() are kept in sync.
         """
         raise NotImplementedError
@@ -151,7 +151,7 @@ class WebhookNotify(Notify):
         # Deliberately keyed on the webhook URL alone. Including webhook_attachments_source
         # would split users who post to the *same* webhook with different attachment sources
         # into two groups, so that webhook would receive two copies of every shared message -
-        # worse than serving both from one user's attachment config. See MULTI_RECIPIENT_PLAN.md.
+        # worse than serving both from one user's attachment config. See plans/MULTI_RECIPIENT_PLAN.md.
         return "webhook", self.webhook
 
     def __post_init__(self):
@@ -207,7 +207,7 @@ class LibrusUser:
     fetch_announcements: bool | None = None  # None means: fall back to the global setting
     # False leaves this child out of a grouped notification's label whenever another child
     # received the same message - but never when nothing else would name it. Labelling only:
-    # it does not affect delivery or dedupe. See SUBJECT_NAMES_PLAN.md.
+    # it does not affect delivery or dedupe. See plans/SUBJECT_NAMES_PLAN.md.
     always_include_in_subject: bool = True
 
     @classmethod

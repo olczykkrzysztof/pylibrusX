@@ -25,7 +25,7 @@ def str_to_int(s: str):
 
 def announcement_id(title: str, author: str, date: datetime.datetime) -> str:
     # Deliberately excludes the body: an announcement edited in place (title/author/date
-    # unchanged) keeps the same id, so it is not re-sent as "new". See ANNOUNCEMENTS_PLAN.md.
+    # unchanged) keeps the same id, so it is not re-sent as "new". See plans/ANNOUNCEMENTS_PLAN.md.
     digest = hashlib.sha1(f"{title}|{author}|{date:%Y-%m-%d}".encode()).hexdigest()[:16]
     return f"/ogloszenia#{digest}"
 

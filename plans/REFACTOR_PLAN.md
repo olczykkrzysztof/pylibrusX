@@ -348,7 +348,7 @@ Each step is a separate commit that leaves `uv run ruff check .` and `uv run pyt
 - `always_include_in_subject` being labelling only: it never reaches grouping, the send rule or
   the choice of representative, and logs always name the full recipient list.
 - `LibrusAnnouncement` sharing `Msg`'s attribute names, and the announcement dedupe rules
-  documented in `ANNOUNCEMENTS_PLAN.md`.
+  documented in `plans/ANNOUNCEMENTS_PLAN.md`.
 - The `announcement_id()` hash (changing it re-sends every announcement).
 - CLI flags and INI/env key names.
 

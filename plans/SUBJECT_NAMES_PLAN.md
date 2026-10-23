@@ -82,7 +82,7 @@ their *name* is left out of the text.
 This is the whole point, and it is easy to get wrong in a way that looks like a feature: if such
 a child were instead excluded from the group, they would stop deduplicating against their
 siblings and start receiving a *second, separate* copy of every shared message — the exact
-problem `MULTI_RECIPIENT_PLAN.md` exists to solve.
+problem `plans/MULTI_RECIPIENT_PLAN.md` exists to solve.
 
 ### D2 — A name is omitted only while another name remains
 
@@ -147,7 +147,7 @@ setting purely cosmetic.
 
 Preferring a *visible* child as representative was considered and rejected: it would let a
 cosmetic flag change which account sends mail, re-opening the determinism question settled in
-`MULTI_RECIPIENT_PLAN.md` D6/D11 for no benefit.
+`plans/MULTI_RECIPIENT_PLAN.md` D6/D11 for no benefit.
 
 ### D7 — Per-user only, with no global counterpart
 
@@ -195,7 +195,7 @@ def group_names(group: ItemGroup) -> tuple[str, str]:
 
     A child configured with always_include_in_subject=false is left out of display_name, but
     only while another child remains to name - a message that reached only such children is
-    still labelled with them rather than with nothing. See SUBJECT_NAMES_PLAN.md D2/D3.
+    still labelled with them rather than with nothing. See plans/SUBJECT_NAMES_PLAN.md D2/D3.
     """
     users = [collection.librus_user for collection, _ in group]
     recipient_names = ", ".join(user.name for user in users)

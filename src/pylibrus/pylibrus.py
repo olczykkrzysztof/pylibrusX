@@ -8,7 +8,7 @@ from pathlib import Path
 if __name__ == "__main__" and not __package__:
     # Run by path (`uv run src/pylibrus/pylibrus.py`, as the Procfile does): Python puts this
     # file's directory first on sys.path, where `import pylibrus` would find this very file
-    # instead of the package. Swap it for src/. Goes away with this module in REFACTOR_PLAN.md
+    # instead of the package. Swap it for src/. Goes away with this module in plans/REFACTOR_PLAN.md
     # step 8, when the entry point becomes `uv run pylibrus`.
     _here = Path(__file__).resolve().parent
     sys.path[:] = [p for p in sys.path if Path(p or ".").resolve() != _here]

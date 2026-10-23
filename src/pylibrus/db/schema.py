@@ -39,7 +39,7 @@ class LibrusAnnouncement(Base):
     """A Librus announcement (AKA 'ogłoszenie'), scraped from /ogloszenia.
 
     Announcements have no stable id and no per-item read/unread flag (see
-    ANNOUNCEMENTS_PLAN.md), so `url` is a synthetic key derived from title+author+date
+    plans/ANNOUNCEMENTS_PLAN.md), so `url` is a synthetic key derived from title+author+date
     (see `announcement_id()`) rather than a real Librus URL, and `email_sent` is the
     only dedupe signal - `send_message=unread` semantics do not apply here.
 

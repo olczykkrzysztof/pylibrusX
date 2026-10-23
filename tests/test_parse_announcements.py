@@ -1,5 +1,5 @@
 """Offline tests for the /ogloszenia parser (`parse_announcements`), the scraper method that
-fetches the page for it, and `announcement_id()`. See ANNOUNCEMENTS_PLAN.md for the design.
+fetches the page for it, and `announcement_id()`. See plans/ANNOUNCEMENTS_PLAN.md for the design.
 
 The parser is called directly on HTML; the fetch cases go through a FakeSession, so nothing
 here touches the network.

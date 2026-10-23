@@ -16,7 +16,7 @@ class LibrusNotifier:
     """One Librus user's sender, plus the MessageStore holding the rows it sends.
 
     The store and the sending live together until the collect phase stops handing live ORM rows
-    to the notify phase (REFACTOR_PLAN.md step 6); until then the store methods are delegated.
+    to the notify phase (plans/REFACTOR_PLAN.md step 6); until then the store methods are delegated.
     """
 
     def __init__(self, pylibrus_config: PyLibrusConfig, librus_user: LibrusUser):

@@ -51,7 +51,7 @@ def collect_all(
     A context manager because each user's notifier has to outlive this phase - its session owns
     the collected rows - so the notifiers close only when the `with` block, and with it the notify
     phase, is done. A user whose collect raises (changed password, throttling) is logged and
-    skipped, so the other children are still notified - see MULTI_RECIPIENT_PLAN.md.
+    skipped, so the other children are still notified - see plans/MULTI_RECIPIENT_PLAN.md.
 
     `open_notifier`, `open_scraper` and `sleep` are injectable so tests run this real loop with
     fakes and without the pause between users.
@@ -65,7 +65,7 @@ def collect_all(
                     collections.append(collect_user(pylibrus_config, librus_user, scraper, notifier))
             except Exception:
                 # One broken account (changed password, throttling) must not stop the other
-                # children being notified - see MULTI_RECIPIENT_PLAN.md.
+                # children being notified - see plans/MULTI_RECIPIENT_PLAN.md.
                 logger.exception(f"Failed to collect messages for {librus_user.name}")
             if i != len(librus_users) - 1:
                 sleep(pylibrus_config.sleep_between_librus_users)
@@ -92,7 +92,7 @@ def collect_user(
     Splitting collect from notify is what makes the multi-recipient annotation possible at all:
     while a single pass is still scraping the first child, nothing yet knows that the second
     child received the same message, so there is no way to label it correctly. See
-    MULTI_RECIPIENT_PLAN.md.
+    plans/MULTI_RECIPIENT_PLAN.md.
 
     The scraper and notifier are arguments rather than locals so that both phases can be
     driven with fakes in tests, the way handle_announcements() already could be.
@@ -131,7 +131,7 @@ def collect_user(
     )
     if fetch_announcements:
         # A Librus markup change on /ogloszenia must never stop message
-        # forwarding above, which is the primary feature - see ANNOUNCEMENTS_PLAN.md.
+        # forwarding above, which is the primary feature - see plans/ANNOUNCEMENTS_PLAN.md.
         try:
             collection.items.extend(collect_announcements(pylibrus_config, notifier, scraper))
         except Exception:

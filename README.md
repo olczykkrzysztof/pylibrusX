@@ -191,8 +191,6 @@ different from messages, because Librus exposes announcements differently:
 * Only announcements published within `max_age_of_sending_announcement_days` are
   forwarded (defaults to `max_age_of_sending_msg_days`).
 
-See [`ANNOUNCEMENTS_PLAN.md`](ANNOUNCEMENTS_PLAN.md) for the full design rationale.
-
 ## Messages sent to several children
 
 The school often sends one message to several children. Each child's Librus account receives
@@ -227,8 +225,7 @@ One consequence of collecting every child before sending: notifications arrive o
 children have been scraped, so with several children and a large `sleep_between_librus_users`
 they land a few minutes later than they used to.
 
-See [`MULTI_RECIPIENT_PLAN.md`](MULTI_RECIPIENT_PLAN.md) for the design rationale, including
-what is deliberately *not* handled — if one child's scrape fails, the message goes out labelled
+Deliberately *not* handled: if one child's scrape fails, the message goes out labelled
 with the children that were scraped successfully and is not relabelled later.
 
 ## Potential improvements

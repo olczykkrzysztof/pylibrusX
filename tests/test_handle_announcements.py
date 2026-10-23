@@ -1,6 +1,6 @@
 """Integration-style tests for `handle_announcements()`: age filtering, dedupe across
 runs, and the fact that dedupe ignores `send_message` (announcements always behave as
-"unsent" - see ANNOUNCEMENTS_PLAN.md). Uses a fake scraper/notifier so no network or SMTP
+"unsent" - see plans/ANNOUNCEMENTS_PLAN.md). Uses a fake scraper/notifier so no network or SMTP
 call happens; the DB is a real SQLite file in tmp_path so `LibrusNotifier`'s persistence
 is exercised for real.
 """

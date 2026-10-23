@@ -8,7 +8,7 @@ pyLibrus scrapes new messages (and, optionally, announcements) from the Librus S
 gradebook portal and forwards them by email or webhook (with optional S3-hosted attachment
 links). It's meant to run unattended from cron (see `Procfile`: `*/5 * * * *`).
 
-The code is mid-way through the split described in `REFACTOR_PLAN.md` (steps 0-5 done; its
+The code is mid-way through the split described in `plans/REFACTOR_PLAN.md` (steps 0-5 done; its
 "Progress" section lists what is left and where the code deviates from the plan). Layout under
 `src/pylibrus/`:
 
@@ -55,6 +55,12 @@ exact email/webhook sent: when one fails, the behaviour changed. `--test-notify`
 
 `ruff` config lives in `pyproject.toml` (line length 120, py312 target, double quotes).
 
+## Plans
+
+Design and planning documents (`*_PLAN.md`) live in `plans/`, never in the repository root. Create
+every new plan there, named `<TOPIC>_PLAN.md`, and refer to it as `plans/<TOPIC>_PLAN.md` from
+code comments and `CLAUDE.md`. Don't link to plans from `README.md`.
+
 ## Configuration
 
 Two independent ways to configure, chosen in `read_pylibrus_config()`:
@@ -94,7 +100,7 @@ The collect loop is `collect_all()` (`pipeline/collect.py`), a context manager: 
 opens stay open until its `with` block, i.e. the notify phase, ends.
 This exists so that a message the school sent to several children can be annotated with all of
 them: while the first child is still being scraped, nothing yet knows the second child received
-the same message. See `MULTI_RECIPIENT_PLAN.md` for the full rationale.
+the same message. See `plans/MULTI_RECIPIENT_PLAN.md` for the full rationale.
 
 - `collect_user()` scrapes and stores one user's messages and announcements, notifying nothing,
   and returns a `UserCollection` of `CollectedItem`s. It takes the scraper and notifier as
@@ -114,7 +120,7 @@ the same message. See `MULTI_RECIPIENT_PLAN.md` for the full rationale.
   still labelled with them, and a group where nobody is always-included falls back to the full
   list. The entry is labelling only; it must never reach `destination_key()`, the grouping, the
   send rule or the representative. Logs always use the full recipient list, so `--dry` and the
-  skip lines never under-report. See `SUBJECT_NAMES_PLAN.md`.
+  skip lines never under-report. See `plans/SUBJECT_NAMES_PLAN.md`.
 - `handle_user()` and `handle_announcements()` remain single-user wrappers; grouping across
   children needs `collect_all()`.
 
@@ -148,7 +154,7 @@ Librus announcements ("ogłoszenia") are a separate feature from messages, scrap
 collected by `collect_announcements()`, called from `collect_user()` inside a broad
 `try/except` so a markup change here never blocks message forwarding. Unlike messages, Librus gives
 announcements no stable id, no per-item URL and no per-item read/unread flag — see
-`ANNOUNCEMENTS_PLAN.md` for the full design rationale. Consequences that matter when touching
+`plans/ANNOUNCEMENTS_PLAN.md` for the full design rationale. Consequences that matter when touching
 this code:
 - `LibrusAnnouncement` (stored in the `announcements` table) uses a synthetic primary key from
   `announcement_id(title, author, date)` — a sha1 of `title|author|date`, deliberately excluding
